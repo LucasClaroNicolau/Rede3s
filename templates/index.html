@@ -1,25 +1,30 @@
-<html lang="en" ng-app="app">
+<html lang="en" ng-app="agenda">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
-
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
+  <script src="static/index-controller.js"></script>
 
-    <script src="{{ url_for('static', filename='index-controller.js') }}"></script>
 </head>
-<body ng-controller="IndexCtrl" layout="column">
+<body ng-controller="Index">
 
+    <!--<div layout="column">
     <span ng-bind="oi"></span>
      <md-input-container>
          <label>Teste</label>
          <input type="text" ng-model="oi">
      </md-input-container>
-<md-button class="md-raised md-primary">Primary</md-button>
+    <md-button  class="md-raised md-primary">Primary</md-button>
+    </div>-->
+
+    <ng-include src="'static/tabela.html'"></ng-include>
 
 </body>
 </html>
