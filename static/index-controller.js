@@ -1,17 +1,19 @@
-var app = angular.module('app', ['ngMaterial', 'ngMessages'])
+var agenda = angular.module('agenda', ['ngMaterial', 'ngMessages'])
 
-.config(function($mdThemingProvider) {
+agenda.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
-    .primaryPalette('green');
+    .primaryPalette('blue');
 })
 
-.controller('IndexCtrl', function($scope, $http) {
- $scope.oi = 'oiassas';
+agenda.controller('Tabela', function($scope,$http) {
+    $http.get('/contatos').then(function(response){
+        $scope.pessoas = response.data
+        console.log(response.data);
+    }, function(error){
+        console.log(error);
+    });
 
- $http.get('http://www.mocky.io/v2/5cf7075c320000a5fb8cd580').then(function(response){
-    console.log(response);
- }, function(error){
-    console.log(error);
- });
+});
 
+agenda.controller('Index', function($scope) {
 });

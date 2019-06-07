@@ -1,0 +1,27 @@
+<!-- Icones https://materializecss.com/icons.html-->
+<div ng-controller="Tabela">
+
+    <!-- Cria a Toolbar-->
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2 flex md-truncate>Contatos</h2>
+        <md-button class="md-fab md-mini md-hue-3" style="background-color:#1565C0" aria-label="Adicionar">
+            <i class="material-icons" style="color: white;">person_add</i>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <!-- Monta e Carrega a lista de contatos-->
+    <md-list style="margin-top: -8px">
+        <md-list-item ng-repeat="person in pessoas" style="align-items: center;" ng-click="goToPerson(person.name, $event)">
+            <i class="material-icons" style="color:#2196F3 ;">phone</i>
+            <h3 style="margin-left:10px;">{{ person.nome }}</h3>
+            <p style="margin-right:15px;"><br /> {{ person.numero }} </p>
+            <md-button class="md-icon-button md-primary" aria-label="Settings">
+                <i class="material-icons" style="color: #2196F3;">delete_forever</i>
+            </md-button>
+            <md-divider></md-divider>
+        </md-list-item>
+    </md-list>
+
+</div>
