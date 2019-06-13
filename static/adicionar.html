@@ -1,0 +1,62 @@
+<style>
+  md-input-container.md-input-invalid > md-icon.material-icons{
+    color: red;
+  }
+
+md-icon.material-icons{
+    color:#2196F3;
+  }
+</style>
+
+<md-dialog aria-label="Cadastro de Contato" flex>
+
+    <!-- Monta a Barra superior -->
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Cadastro de Contato</h2>
+      </div>
+    </md-toolbar>
+
+    <!-- Monta o Conteudo da modal-->
+    <form name="formulario" flex ng-submit="add()">
+      <div style="margin:10px"layout="column" flex>
+        <div layout="column">
+
+          <!-- Input Nome-->
+          <md-input-container class="md-icon-float md-block" flex="100">
+            <label>Nome</label>
+            <md-icon>
+              <i class="material-icons">person</i>
+            </md-icon>
+            <input required name="nome" ng-model="nomeadd" md-maxlength="254">
+            <div ng-messages="formulario.nome.$error">
+              <div ng-message="required">Nome é obrigatório.</div>
+              <div ng-message="md-maxlength">Nome deve conter no máximo 254 caracteres.</div>
+            </div>
+          </md-input-container>
+
+          <!-- Input Número-->
+          <md-input-container class="md-icon-float md-block" flex="100">
+            <label>Número</label>
+            <md-icon>
+              <i class="material-icons">phone</i>
+            </md-icon>
+            <input required name="numero" ng-model="numeroadd" md-maxlength="17">
+            <div ng-messages="formulario.numero.$error">
+              <div ng-message="required">Número é obrigatório.</div>
+              <div ng-message="md-maxlength">Número deve conter no máximo 17 digitos.</div>
+            </div>
+          </md-input-container>
+
+        </div>
+      </div>
+
+      <!-- Monta os botões -->
+      <md-dialog-actions>
+        <md-button type="submit" class="md-primary">Salvar</md-button>
+
+        <md-button ng-click="cancelar()">Cancelar</md-button>
+      </md-dialog-actions>
+    </form>
+
+</md-dialog>
