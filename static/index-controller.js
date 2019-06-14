@@ -32,8 +32,6 @@ agenda.controller('Tabela', function($scope,$http,$mdDialog) {
         }
 
         $scope.add = function() {
-            console.log($scope.nomeadd);
-            console.log($scope.numeroadd);
             data = {
                 "nome":""+$scope.nomeadd,
                 "numero" : $scope.numeroadd
@@ -47,6 +45,17 @@ agenda.controller('Tabela', function($scope,$http,$mdDialog) {
             });
             $mdDialog.hide();
         }
+    }
+
+    $scope.deletar = function(contatoId){
+        $http.post('/rmvcontato', contatoId).then(function successCallback(response) {
+
+                $scope.attContatos();
+
+            }, function errorCallback(response) {
+
+            });
+
      }
 });
 

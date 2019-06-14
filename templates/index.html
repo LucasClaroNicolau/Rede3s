@@ -1,4 +1,4 @@
-<html lang="en" ng-app="agenda">
+<html lang="pt" ng-app="agenda">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
@@ -11,18 +11,17 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
   <script src="static/index-controller.js"></script>
+<style>
+  md-toolbar {
+    position: fixed;
+    top: 0
+  }
 
+html, body {margin: 0; height: 100%; overflow: hidden}
+
+</style>
 </head>
 <body ng-controller="Index">
-
-    <!--<div layout="column">
-    <span ng-bind="oi"></span>
-     <md-input-container>
-         <label>Teste</label>
-         <input type="text" ng-model="oi">
-     </md-input-container>
-    <md-button  class="md-raised md-primary">Primary</md-button>
-    </div>-->
 
     <ng-include src="'static/tabela.html'"></ng-include>
 

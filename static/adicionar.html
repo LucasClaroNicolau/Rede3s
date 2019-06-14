@@ -47,13 +47,12 @@ md-icon.material-icons{
               <div ng-message="md-maxlength">Número deve conter no máximo 17 digitos.</div>
             </div>
           </md-input-container>
-
         </div>
       </div>
 
       <!-- Monta os botões -->
       <md-dialog-actions>
-        <md-button type="submit" class="md-primary">Salvar</md-button>
+        <md-button type="submit" ng-disabled="formulario.$invalid" class="md-primary">Salvar</md-button>
 
         <md-button ng-click="cancelar()">Cancelar</md-button>
       </md-dialog-actions>
