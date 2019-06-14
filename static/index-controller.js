@@ -7,22 +7,26 @@ agenda.config(function($mdThemingProvider) {
 
 agenda.controller('Tabela', function($scope,$http,$mdDialog) {
 
-    $http.get('/listcontatos').then(function(response){
-        $scope.pessoas = response.data
-        console.log(response.data);
-    }, function(error){
-        console.log(error);
-    });
+    $scope.attContatos = function(){
+        $http.get('/listcontatos').then(function(response){
+            $scope.pessoas = response.data
+        },function(error){
+            console.log(error);
+        });
+    };
+
+    $scope.attContatos();
 
     $scope.showAdvanced = function(ev) {
         $mdDialog.show({
+            locals: {callback: $scope.attContatos},
             controller: DialogController,
             templateUrl: 'static/adicionar.html',
             targetEvent: ev,
         })
     };
 
-    function DialogController($scope, $mdDialog,$http ) {
+    function DialogController($scope, $mdDialog,$http, callback) {
         $scope.cancelar = function() {
             $mdDialog.hide();
         }
@@ -35,11 +39,9 @@ agenda.controller('Tabela', function($scope,$http,$mdDialog) {
                 "numero" : $scope.numeroadd
             }
             $http.post('/adccontato', data).then(function successCallback(response) {
-                $http.get('/listcontatos').then(function(response){
-                $scope.pessoas = response.data
-            }, function(error){
-                console.log(error);
-            });
+
+                callback();
+
             }, function errorCallback(response) {
 
             });
