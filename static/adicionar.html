@@ -3,9 +3,14 @@
     color: red;
   }
 
-md-icon.material-icons{
+  md-icon.material-icons{
     color:#2196F3;
   }
+
+  form{
+    margin-top:40px;
+  }
+
 </style>
 
 <md-dialog aria-label="Cadastro de Contato" flex>
@@ -18,7 +23,7 @@ md-icon.material-icons{
     </md-toolbar>
 
     <!-- Monta o Conteudo da modal-->
-    <form name="formulario" flex ng-submit="add()">
+    <form name="formulario" flex ng-submit="add()" style="margin-top:55px">
       <div style="margin:10px"layout="column" flex>
         <div layout="column">
 

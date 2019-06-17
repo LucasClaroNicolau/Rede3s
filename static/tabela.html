@@ -19,8 +19,8 @@
                     <md-list style="margin-top: -8px" flex>
                         <md-list-item ng-repeat="person in pessoas" style="align-items: center;" ng-click="goToPerson(person.name, $event)" flex>
                             <i class="material-icons" style="color:#2196F3 ;">phone</i>
-                            <h3 style="margin-left:10px;">{{ person.nome }}</h3>
-                            <p style="text-align: left; margin-top:45px;">{{ person.numero }} </p>
+                            <div flex="100"><h3 style="margin-left:10px;">{{ person.nome }}</h3>
+                            <p style="margin-left:10px; margin-top:-30px;">{{ person.numero }} </p></div>
                             <md-button class="md-icon-button md-primary" aria-label="Excluir" ng-click="deletar(person.id)">
                                 <i class="material-icons" style="color: #2196F3;">delete_forever</i>
                             </md-button>
