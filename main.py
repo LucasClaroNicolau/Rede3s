@@ -1,10 +1,12 @@
 import json
 import sqlite3
+from flask_socketio import SocketIO, send
 from flask import Flask, render_template, jsonify, request
 from flask_restful import Api
 
 app = Flask(__name__)
 api = Api(app)
+socketio = SocketIO(app)
 
 cnx = sqlite3.connect('rede3s.db', check_same_thread=False)
 conx = cnx.cursor()
@@ -16,6 +18,7 @@ def setContato():
     insert = json.loads(dados.decode('utf8').replace("'", '"'))
     conx.execute("INSERT INTO contatos (nome, numero) VALUES (?, ?)", (insert.get('nome'), insert.get('numero')))
     cnx.commit()
+    socketio.emit('buscar', broadcast=True)
     return ""
 
 @app.route("/rmvcontato", methods=['POST'])
@@ -24,6 +27,7 @@ def rmvContato():
     remove = json.loads(dados.decode('utf8').replace("'", '"'))
     conx.execute("DELETE FROM contatos WHERE id=?", [str(remove)])
     cnx.commit()
+    socketio.emit('buscar', broadcast=True)
     return ""
 
 @app.route("/listcontatos", methods=['GET'])
@@ -42,4 +46,5 @@ def index():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=2222)
+    # app.run(host='0.0.0.0', port=2222)
+    socketio.run(app,host='0.0.0.0', port=2222)

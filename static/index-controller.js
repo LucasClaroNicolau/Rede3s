@@ -17,6 +17,10 @@ agenda.controller('Tabela', function($scope,$http,$mdDialog) {
 
     $scope.attContatos();
 
+     socket.on('buscar', function() {
+        $scope.attContatos();
+    });
+
     $scope.showAdvanced = function(ev) {
         $mdDialog.show({
             locals: {callback: $scope.attContatos},
@@ -49,8 +53,9 @@ agenda.controller('Tabela', function($scope,$http,$mdDialog) {
 
     $scope.deletar = function(contatoId){
         $http.post('/rmvcontato', contatoId).then(function successCallback(response) {
-
-                $scope.attContatos();
+                socket.on('buscar', function() {
+                    $scope.attContatos();
+                });
 
             }, function errorCallback(response) {
 
