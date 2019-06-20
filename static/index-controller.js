@@ -27,6 +27,7 @@ agenda.controller('Tabela', function($scope,$http,$mdDialog) {
             controller: DialogController,
             templateUrl: 'static/adicionar.html',
             targetEvent: ev,
+            fullscreen: true
         })
     };
 
